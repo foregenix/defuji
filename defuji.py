@@ -24,5 +24,5 @@ if len(sys.argv) == 2:
 	else: print("Failed")
 else:       
 	print("Usage:")
-	print("dexerox.py IP")
-	print("i.e.: dexerox.py 192.168.1.100")
+	print("defuji.py IP")
+	print("i.e.: defuji.py 192.168.1.100")
